@@ -81,12 +81,22 @@ export default function BasicDemo() {
   function handleRowS() {
     if (Cusselect > rows) {
       cantselect();
+      // return;
     }
 
     if (Cusselect || Cusselect >= 0) {
       const rowsS = pro.slice(0, Cusselect);
 
-      setSpro((p) => [...p, ...rowsS]);
+      setSpro((prev) => {
+        const merged = [...prev, ...rowsS];
+
+        const unique = merged.filter(
+          (item, index, self) =>
+            index === self.findIndex((t) => t.id === item.id),
+        );
+
+        return unique;
+      });
     }
   }
 
