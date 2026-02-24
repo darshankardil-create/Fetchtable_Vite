@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + PrimeReact component library
 
 
 # Live website:(https://fetchvitetable.netlify.app)
