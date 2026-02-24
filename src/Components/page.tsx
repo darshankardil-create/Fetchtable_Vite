@@ -43,18 +43,8 @@ function DynamicColumnsDemo({
           `https://api.artic.edu/api/v1/artworks?page=${pageNumprop}&limit=${rows}`,
         );
 
-        // setres(data2);
         const fetchdata = data2.data.data;
         setPro(fetchdata);
-
-        // setPro((p) => {
-        //   const withind = p.map((i, ind) => ({
-        //     ...i,
-        //     index: pageNumprop * rows + ind,
-        //   }));
-
-        //   return withind;
-        // });
 
         console.log("pageNum", pageNumprop);
 
@@ -78,8 +68,18 @@ function DynamicColumnsDemo({
         <DataTable
           value={pro}
           tableStyle={{ minWidth: "60rem" }}
-          selection={Spro}
-          onSelectionChange={(e) => setSpro(e.value)}
+          selection={Spro.filter((s) => pro.some((p) => p.id === s.id))}
+          onSelectionChange={(e) => {
+            const withCurP = e.value;
+
+            setSpro((prev) => {
+              const withoutCurP = prev.filter(
+                (item) => !pro.some((p) => p.id === item.id),
+              );
+
+              return [...withoutCurP, ...withCurP];
+            });
+          }}
           dataKey="id"
         >
           <Column selectionMode="multiple" headerStyle={{ width: "3rem" }} />
