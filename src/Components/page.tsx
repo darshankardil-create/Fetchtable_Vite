@@ -6,14 +6,19 @@ import "../index.css";
 // import type { AxiosResponse } from "axios";
 import type { DataTableValueArray, DataTableValue } from "primereact/datatable";
 
+
+
+
 interface Pageprop {
   rows: number;
-  pro: DataTableValueArray[];
+  pro: DataTableValueArray[] 
   setTotal: React.Dispatch<React.SetStateAction<number>>;
+
   Spro: DataTableValue;
+
   setSpro: React.Dispatch<
-    React.SetStateAction<DataTableValueArray[] | DataTableValue>
-  >;
+    React.SetStateAction<DataTableValueArray[] | DataTableValue> 
+>
   pageNumprop: number;
   setPro: React.Dispatch<React.SetStateAction<DataTableValueArray[]>>;
 }
@@ -68,13 +73,12 @@ function DynamicColumnsDemo({
         <DataTable
           value={pro}
           tableStyle={{ minWidth: "60rem" }}
-          selection={Spro.filter((s) => pro.some((p) => p.id === s.id))}
+          selection={Spro.filter((s: object) => pro.some((p) => (p as unknown as { id: number }).id === (s as unknown as { id: number }).id))}
           onSelectionChange={(e) => {
             const withCurP = e.value;
-
             setSpro((prev) => {
               const withoutCurP = prev.filter(
-                (item) => !pro.some((p) => p.id === item.id),
+                (item: object) => !pro.some((p) => (p as unknown as { id: number }).id === (item as unknown as { id: number }).id),
               );
 
               return [...withoutCurP, ...withCurP];

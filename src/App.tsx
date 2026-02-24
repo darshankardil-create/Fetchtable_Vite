@@ -86,7 +86,7 @@ export default function BasicDemo() {
 
     if (Cusselect || Cusselect >= 0) {
       const rowsS = pro.slice(0, Cusselect);
-      setSpro((p) => [...p, ...rowsS]);
+      setSpro((p) => [...(p as unknown[]), ...rowsS]);
     }
   }
 
