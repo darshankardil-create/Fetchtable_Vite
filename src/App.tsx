@@ -81,7 +81,6 @@ export default function BasicDemo() {
   function handleRowS() {
     if (Cusselect > rows) {
       cantselect();
-      // return;
     }
 
     if (Cusselect || Cusselect >= 0) {
@@ -103,7 +102,7 @@ export default function BasicDemo() {
         pro={pro}
       />
 
-      <div className="card absolute top-[91%] left-[35%]">
+      <div className="card absolute top-[93%] left-[35%]">
         <div className="flex gap-13 relative right-[30%]">
           <div className="font-bold">
             Showing {rows || mylimit} out of: {total}

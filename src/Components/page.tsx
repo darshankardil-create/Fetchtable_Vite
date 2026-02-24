@@ -73,7 +73,7 @@ function DynamicColumnsDemo({
         <DataTable
           value={pro}
           tableStyle={{ minWidth: "60rem" }}
-          selection={Spro.filter((s: object) => pro.some((p) => (p as unknown as { id: number }).id === (s as unknown as { id: number }).id))}
+          selection={Spro.filter((s:object) => pro.some((p) => (p as unknown as { id: number }).id === (s as unknown as { id: number }).id))}
           onSelectionChange={(e) => {
             const withCurP = e.value;
             setSpro((prev) => {
@@ -97,3 +97,4 @@ function DynamicColumnsDemo({
 }
 
 export default DynamicColumnsDemo;
+
