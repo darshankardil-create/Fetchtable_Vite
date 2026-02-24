@@ -46,6 +46,16 @@ function DynamicColumnsDemo({
         // setres(data2);
         const fetchdata = data2.data.data;
         setPro(fetchdata);
+
+        // setPro((p) => {
+        //   const withind = p.map((i, ind) => ({
+        //     ...i,
+        //     index: pageNumprop * rows + ind,
+        //   }));
+
+        //   return withind;
+        // });
+
         console.log("pageNum", pageNumprop);
 
         setTotal(data2.data.pagination.total);

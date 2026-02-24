@@ -75,7 +75,6 @@ export default function BasicDemo() {
 
   function handlepage() {
     if (pageNum === 1) return;
-
     setpageNum((p) => p - 1);
   }
 
@@ -87,7 +86,7 @@ export default function BasicDemo() {
     if (Cusselect || Cusselect >= 0) {
       const rowsS = pro.slice(0, Cusselect);
 
-      setSpro(rowsS);
+      setSpro((p) => [...p, ...rowsS]);
     }
   }
 
