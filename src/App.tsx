@@ -92,7 +92,7 @@ export default function BasicDemo() {
   }
 
   return (
-    <div className="pb-20 bg-[#cbd5e1]">
+    <div className="pb-20 pt-10 bg-[#cbd5e1]">
       <Toast ref={toast} />
       <Page
         rows={rows}
@@ -104,7 +104,7 @@ export default function BasicDemo() {
         pro={pro}
       />
 
-      <div className="card absolute top-[90%] left-[35%]">
+      <div className="card absolute top-[91%] left-[35%]">
         <div className="flex gap-13 relative right-[30%]">
           <div className="font-bold">
             Showing {rows || mylimit} out of: {total}

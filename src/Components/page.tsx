@@ -60,9 +60,9 @@ function DynamicColumnsDemo({
   console.log("selectedpro", Spro);
 
   return (
-    <div className=" h-180 overflow-y-auto">
+    <div className=" h-170 overflow-y-auto">
       <div className="card">
-        <div className="absolute z-3 top-7 font-bold left-50">
+        <div className="absolute z-3 top-2 font-bold left-40">
           Total selected rows {Spro?.length}/{rows}
         </div>
         <DataTable
