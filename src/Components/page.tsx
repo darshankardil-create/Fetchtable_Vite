@@ -69,7 +69,8 @@ function DynamicColumnsDemo({
         <DataTable
           value={pro}
           tableStyle={{ minWidth: "60rem" }}
-          selection={Spro}
+          // selection={Spro}
+          selection={Spro.filter((s:object) => pro.some((p) => (p as unknown as { id: number }).id == (s as unknown as { id: number }).id))}
           onSelectionChange={(e) => {
             const addnew = e.value;
 
