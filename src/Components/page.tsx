@@ -3,22 +3,18 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import axios from "axios";
 import "../index.css";
-// import type { AxiosResponse } from "axios";
 import type { DataTableValueArray, DataTableValue } from "primereact/datatable";
-
-
-
 
 interface Pageprop {
   rows: number;
-  pro: DataTableValueArray[] 
+  pro: DataTableValueArray[];
   setTotal: React.Dispatch<React.SetStateAction<number>>;
 
   Spro: DataTableValue;
 
   setSpro: React.Dispatch<
-    React.SetStateAction<DataTableValueArray[] | DataTableValue> 
->
+    React.SetStateAction<DataTableValueArray[] | DataTableValue>
+  >;
   pageNumprop: number;
   setPro: React.Dispatch<React.SetStateAction<DataTableValueArray[]>>;
 }
@@ -73,15 +69,21 @@ function DynamicColumnsDemo({
         <DataTable
           value={pro}
           tableStyle={{ minWidth: "60rem" }}
-          selection={Spro.filter((s:object) => pro.some((p) => (p as unknown as { id: number }).id === (s as unknown as { id: number }).id))}
+          selection={Spro}
           onSelectionChange={(e) => {
-            const withCurP = e.value;
-            setSpro((prev) => {
-              const withoutCurP = prev.filter(
-                (item: object) => !pro.some((p) => (p as unknown as { id: number }).id === (item as unknown as { id: number }).id),
-              );
+            const addnew = e.value;
 
-              return [...withoutCurP, ...withCurP];
+            setSpro((prev) => {
+              const withoutdupli = prev.filter(
+                (item: object) =>
+                  !pro.some(
+                    (p) =>
+                      (p as unknown as { id: number }).id ===
+                      (item as unknown as { id: number }).id,
+                  ),
+              ); //if match then remove from Spro by filter
+              //pro stands for products
+              return [...withoutdupli, ...addnew]; //comp
             });
           }}
           dataKey="id"
@@ -97,4 +99,3 @@ function DynamicColumnsDemo({
 }
 
 export default DynamicColumnsDemo;
-
